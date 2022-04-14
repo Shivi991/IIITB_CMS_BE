@@ -1,5 +1,6 @@
 package com.example.IIITB_CMS_BE.controller;
 
+import com.example.IIITB_CMS_BE.beans.EmpDetails;
 import com.example.IIITB_CMS_BE.beans.StudentDetails;
 import com.example.IIITB_CMS_BE.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class AdminController {
     private AdminService adminService;
 
     @PostMapping("/addStudent")
-    public StudentDetails AddStudent(@Valid @RequestBody StudentDetails studentDetails){
+    public StudentDetails AddStudent( @RequestBody StudentDetails studentDetails){
         return adminService.AddStudent_Service(studentDetails);
     }
 
@@ -26,31 +27,42 @@ public class AdminController {
     public List<StudentDetails> ViewStudents(){
         return adminService.ViewStudent_Service();
     }
-//    @PutMapping("/updateAccept")
-//    public patientDetails updateAccept(@RequestBody patientDetails pd){
-//        return pdS.updateAcceptRest(pd);
-//    }
-//
-//    @DeleteMapping("/delete/{id}")
-//    public ResponseEntity<HttpStatus> deletePatientDetails(@PathVariable String id){
-//        try{
-//            this.pdS.deletePatientDetailsRest(Integer.valueOf(id));
-//            return new ResponseEntity<>(HttpStatus.OK);
-//        }catch (Exception e){
-//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
 
     @PutMapping("/updateStudent")
     public StudentDetails UpdateStudent(@RequestBody StudentDetails studentDetails){
         return adminService.UpdateStudent_Service(studentDetails);
     }
 
-
     @DeleteMapping("/deleteStudent/{roll_no}")
     public ResponseEntity<HttpStatus> DeleteStudent(@PathVariable String roll_no){
         try {
             this.adminService.DeleteStudent_Service(roll_no);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/addUser")
+    public EmpDetails AddUser( @RequestBody EmpDetails empDetails){
+        return adminService.AddEmp_Service(empDetails);
+    }
+
+    @GetMapping("/viewUsers")
+    public List<EmpDetails> ViewUsers(){
+        return adminService.ViewEmp_Service();
+    }
+
+    @PutMapping("/updateUser")
+    public EmpDetails UpdateUser(@RequestBody EmpDetails empDetails){
+        return adminService.UpdateEmp_Service(empDetails);
+    }
+
+    @DeleteMapping("/deleteUser/{id}")
+    public ResponseEntity<HttpStatus> DeleteUser(@PathVariable String id){
+        try {
+            this.adminService.DeleteEmp_Service(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }
         catch (Exception e){

@@ -19,6 +19,8 @@ public class StudentDetails {
 
     private String Name;
 
+    private String Password;
+
     @Column(unique = true)
     private String MailID;
 
@@ -28,22 +30,22 @@ public class StudentDetails {
 
     private String HostelName;
 
-    private String Password;
+    private boolean Status;
+
 
     public StudentDetails() {
     }
 
-    public StudentDetails( String rollNo, String name, String mailID, String programme, int roomNo, String hostelName, String password) {
+    public StudentDetails(String rollNo, String name, String password, String mailID, String programme, int roomNo, String hostelName,boolean status) {
         RollNo = rollNo;
         Name = name;
+        Password = password;
         MailID = mailID;
         Programme = programme;
         RoomNo = roomNo;
         HostelName = hostelName;
-        Password = password;
-
+        Status=status;
     }
-
 
     public String getRollNo() {
         return RollNo;
@@ -61,7 +63,13 @@ public class StudentDetails {
         Name = name;
     }
 
+    public String getPassword() {
+        return Password;
+    }
 
+    public void setPassword(String password) {
+        Password = password;
+    }
 
     public String getMailID() {
         return MailID;
@@ -95,24 +103,25 @@ public class StudentDetails {
         HostelName = hostelName;
     }
 
-    public String getPassword() {
-        return Password;
+    public boolean isStatus() {
+        return Status;
     }
 
-    public void setPassword(String password) {
-        Password = password;
+    public void setStatus(boolean status) {
+        Status = status;
     }
 
     @Override
     public String toString() {
         return "StudentDetails{" +
-                ", RollNo='" + RollNo + '\'' +
+                "RollNo='" + RollNo + '\'' +
                 ", Name='" + Name + '\'' +
+                ", Password='" + Password + '\'' +
                 ", MailID='" + MailID + '\'' +
                 ", Programme='" + Programme + '\'' +
                 ", RoomNo=" + RoomNo +
                 ", HostelName='" + HostelName + '\'' +
-                ", Password='" + Password + '\'' +
+                ", Status=" + Status +
                 '}';
     }
 }
