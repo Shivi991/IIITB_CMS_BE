@@ -18,7 +18,7 @@ public class ComplaintDetails {
 
     private String TimeStamp;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="Student_RollNo")
     private StudentDetails studentDetails;
 
