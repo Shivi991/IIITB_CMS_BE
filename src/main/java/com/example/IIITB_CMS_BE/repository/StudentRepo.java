@@ -22,6 +22,11 @@ public interface StudentRepo extends JpaRepository<StudentDetails,String> {
     )
     public List<StudentDetails> findStudents_Active();
 
+    @Query(
+            value = "SELECT * FROM student_details s WHERE s.email = ?1",
+            nativeQuery = true
+    )
+    public StudentDetails findByEmail(String email);
 
 
 }

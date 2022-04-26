@@ -33,6 +33,7 @@ public class AdminController {
         return adminService.UpdateStudent_Service(studentDetails);
     }
 
+
     @DeleteMapping("/deleteStudent/{roll_no}")
     public ResponseEntity<HttpStatus> DeleteStudent(@PathVariable String roll_no){
         try {

@@ -24,7 +24,7 @@ public class LoginController {
         return loginService.SignUp_Service(empDetails);
     }
 
-    @GetMapping("/signin")
+    @PostMapping("/login")
     public ResponseEntity<?> SignIn(@RequestBody LoginRequest loginRequest) throws Exception{
         return ResponseEntity.ok(loginService.SignIn_Service(loginRequest));
     }

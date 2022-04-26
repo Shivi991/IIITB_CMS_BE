@@ -26,6 +26,11 @@ public interface EmpRepo extends JpaRepository<EmpDetails,Integer> {
     )
     public List<EmpDetails> findEmp_Active();
 
+    @Query(
+            value = "SELECT * FROM emp_details e WHERE e.email= ?1",
+            nativeQuery = true)
+    public EmpDetails findByEmail(String email);
+
 //    @Query(
 //            value = "UPDATE emp_details e SET e.status=true WHERE e.id= ?1",
 //            nativeQuery = true

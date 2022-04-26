@@ -1,25 +1,25 @@
 package com.example.IIITB_CMS_BE.beans;
 
 public class LoginRequest {
-    private String username;
+    private String email;
     private String password;
     private String role;
 
     public LoginRequest() {
     }
 
-    public LoginRequest(String username, String password, String role) {
-        this.username = username;
+    public LoginRequest(String email, String password, String role) {
+        this.email = email;
         this.password = password;
         this.role = role;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -41,7 +41,7 @@ public class LoginRequest {
     @Override
     public String toString() {
         return "LoginRequest{" +
-                "username='" + username + '\'' +
+                "email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
                 '}';

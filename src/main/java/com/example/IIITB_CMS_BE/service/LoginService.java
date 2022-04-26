@@ -30,14 +30,15 @@ public class LoginService {
 
     public Boolean SignIn_Service(LoginRequest loginRequest){
         if(loginRequest.getRole()=="Student"){
-            StudentDetails studentDetails=studentRepo.findByRollNo(loginRequest.getUsername());
+            System.out.println(loginRequest+"HI");
+            StudentDetails studentDetails=studentRepo.findByEmail(loginRequest.getEmail());
             if(passwordEncoder.matches(loginRequest.getPassword(), studentDetails.getPassword()) && studentDetails.isStatus()){
                 return true;
             }
             return false;
         }
-
-        EmpDetails empDetails = empRepo.findByName(loginRequest.getUsername());
+        System.out.println(loginRequest);
+        EmpDetails empDetails = empRepo.findByEmail(loginRequest.getEmail());
 
         if(passwordEncoder.matches(loginRequest.getPassword(), empDetails.getPassword()) && empDetails.getRole().equals(loginRequest.getRole()) && empDetails.isStatus()){
             return true;

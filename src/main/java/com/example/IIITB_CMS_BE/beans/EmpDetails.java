@@ -11,7 +11,7 @@ public class EmpDetails {
     @Id
     private String id;
 
-    private String role;
+    private String role;//Admin, Warden, Exam Controller, SAC, FoodCom, SportsCom, Placecom
 
     private String name;
 
@@ -20,7 +20,7 @@ public class EmpDetails {
     @Email
     private String email;
 
-    private boolean status;
+    private boolean status=true;
 
     public EmpDetails() {
     }
