@@ -1,5 +1,6 @@
 package com.example.IIITB_CMS_BE.controller;
 
+import com.example.IIITB_CMS_BE.beans.ComplaintDetails;
 import com.example.IIITB_CMS_BE.beans.EmpDetails;
 import com.example.IIITB_CMS_BE.beans.StudentDetails;
 import com.example.IIITB_CMS_BE.service.AdminService;
@@ -23,6 +24,11 @@ public class AdminController {
         return adminService.AddStudent_Service(studentDetails);
     }
 
+    @GetMapping("/getStudent/{RollNo}")
+    public StudentDetails GetStudent(@PathVariable String RollNo){
+        return adminService.GetStudent_Service(RollNo);
+    }
+
     @GetMapping("/viewStudents")
     public List<StudentDetails> ViewStudents(){
         return adminService.ViewStudent_Service();
@@ -43,6 +49,11 @@ public class AdminController {
         catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping("/getUser/{email}")
+    public EmpDetails GetUser(@PathVariable String email){
+        return adminService.GetEmployee_Service(email);
     }
 
     @PostMapping("/addUser")
@@ -69,5 +80,20 @@ public class AdminController {
         catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping("/viewComplaints")
+    public List<ComplaintDetails> ViewComplaints(){
+        return adminService.ViewComplaints_Service();
+    }
+
+    @GetMapping("/getComplaint/{compID}")
+    public  ComplaintDetails GetComplaint(@PathVariable Integer compID){
+        return adminService.GetComplaint_Service(compID);
+    }
+    @PostMapping("/updateComplaint")
+    public ComplaintDetails UpdateComplaint(@RequestBody ComplaintDetails complaintDetails){
+        System.out.println(complaintDetails);
+        return adminService.UpdateComplaint_Service(complaintDetails);
     }
 }

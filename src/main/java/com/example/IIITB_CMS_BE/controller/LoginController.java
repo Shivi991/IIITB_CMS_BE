@@ -4,6 +4,7 @@ package com.example.IIITB_CMS_BE.controller;
 import com.example.IIITB_CMS_BE.beans.EmpDetails;
 import com.example.IIITB_CMS_BE.beans.LoginRequest;
 import com.example.IIITB_CMS_BE.beans.StudentDetails;
+import com.example.IIITB_CMS_BE.beans.StudentLoginRequest;
 import com.example.IIITB_CMS_BE.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,8 +35,8 @@ public class LoginController {
         return loginService.StudentSignUp_service(studentDetails);
     }
 
-    @GetMapping("/student/login")
-    public ResponseEntity<?> StudentSignIn(@RequestBody LoginRequest loginRequest) throws Exception{
-        return ResponseEntity.ok(loginService.SignIn_Service(loginRequest));
+    @PostMapping("/student/login")
+    public ResponseEntity<?> StudentSignIn(@RequestBody StudentLoginRequest studentLoginRequest) throws Exception{
+        return ResponseEntity.ok(loginService.StudentSignIn_Service(studentLoginRequest));
     }
 }

@@ -19,11 +19,15 @@ public class ComplaintController {
     private ComplaintService complaintService;
 
 
-    @PostMapping("/student/addComplaint")
-    public ComplaintDetails AddComplaint(@RequestBody ComplaintRequest complaintRequest){
-        return complaintService.AddComplaint_Service(complaintRequest);
+    @PostMapping("/student/addComplaintRequest")
+    public ComplaintDetails AddComplaintRequest(@RequestBody ComplaintRequest complaintRequest){
+        return complaintService.AddComplaintRequest_Service(complaintRequest);
     }
 
+    @PostMapping("/student/addComplaint")
+    public ComplaintDetails AddComplaint(@RequestBody ComplaintDetails complaintDetails){
+        return complaintService.AddComplaint_Service(complaintDetails);
+    }
     @GetMapping("/student/viewComplaints/{RollNo}")
     public List<ComplaintDetails> ViewComplaints(@PathVariable String RollNo){
         return complaintService.ViewComplaints_Service(RollNo);
@@ -39,4 +43,8 @@ public class ComplaintController {
         return complaintService.StudentCompType_Service(student_compType);
     }
 
+    @PostMapping("/updateComp")
+    public ComplaintDetails updateComplaint(@RequestBody ComplaintDetails complaintDetails){
+        return complaintService.updateComp_Service(complaintDetails);
+    }
 }

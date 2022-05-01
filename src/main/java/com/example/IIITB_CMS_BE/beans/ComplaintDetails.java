@@ -1,87 +1,44 @@
 package com.example.IIITB_CMS_BE.beans;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 
 @Entity
 @Table()
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ComplaintDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    //private String rollNo;
+
+
     private String ComplaintType;
 
     private String Description;
 
-    private String Status;
+    private String Status;//Pending Accepted Rejected Solved
+
+    private String Response;
+
 
     private String TimeStamp;
+
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="Student_RollNo")
     private StudentDetails studentDetails;
-
-    public ComplaintDetails() {
-    }
-
-    public ComplaintDetails(int id,  String complaintType, String description, String status, String timeStamp, StudentDetails studentDetails) {
-        this.id = id;
-        ComplaintType = complaintType;
-        Description = description;
-        Status = status;
-        TimeStamp = timeStamp;
-        this.studentDetails = studentDetails;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
-    public String getComplaintType() {
-        return ComplaintType;
-    }
-
-    public void setComplaintType(String complaintType) {
-        ComplaintType = complaintType;
-    }
-
-    public String getDescription() {
-        return Description;
-    }
-
-    public void setDescription(String description) {
-        Description = description;
-    }
-
-    public String getStatus() {
-        return Status;
-    }
-
-    public void setStatus(String status) {
-        Status = status;
-    }
-
-    public String getTimeStamp() {
-        return TimeStamp;
-    }
-
-    public void setTimeStamp(String timeStamp) {
-        TimeStamp = timeStamp;
-    }
-
-    public StudentDetails getStudentDetails() {
-        return studentDetails;
-    }
-
-    public void setStudentDetails(StudentDetails studentDetails) {
-        this.studentDetails = studentDetails;
-    }
 
     @Override
     public String toString() {
@@ -90,6 +47,7 @@ public class ComplaintDetails {
                 ", ComplaintType='" + ComplaintType + '\'' +
                 ", Description='" + Description + '\'' +
                 ", Status='" + Status + '\'' +
+                ", Response='" + Response + '\''+
                 ", TimeStamp='" + TimeStamp + '\'' +
                 ", studentDetails=" + studentDetails +
                 '}';

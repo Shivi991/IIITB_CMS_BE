@@ -3,6 +3,7 @@ package com.example.IIITB_CMS_BE.service;
 import com.example.IIITB_CMS_BE.beans.EmpDetails;
 import com.example.IIITB_CMS_BE.beans.LoginRequest;
 import com.example.IIITB_CMS_BE.beans.StudentDetails;
+import com.example.IIITB_CMS_BE.beans.StudentLoginRequest;
 import com.example.IIITB_CMS_BE.repository.EmpRepo;
 import com.example.IIITB_CMS_BE.repository.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,19 @@ public class LoginService {
         studentDetails.setPassword(passwordEncoder.encode(studentDetails.getPassword()));
         studentDetails=studentRepo.save(studentDetails);
         return studentDetails;
+    }
+
+    public Boolean StudentSignIn_Service(StudentLoginRequest studentLoginRequest){
+
+            System.out.println(studentLoginRequest+"HI");
+            StudentDetails studentDetails=studentRepo.findByRollNo(studentLoginRequest.getStudentID());
+            if(passwordEncoder.matches(studentLoginRequest.getPassword(), studentDetails.getPassword()) && studentDetails.isStatus()){
+                return true;
+            }
+            return false;
+
+
+
     }
 
 //    public Boolean StudentSignIn_Service(LoginRequest loginRequest){

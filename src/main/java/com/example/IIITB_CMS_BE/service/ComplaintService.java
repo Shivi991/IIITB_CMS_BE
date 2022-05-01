@@ -25,7 +25,7 @@ public class ComplaintService {
 
     SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
-    public ComplaintDetails AddComplaint_Service(ComplaintRequest complaintRequest){
+    public ComplaintDetails AddComplaintRequest_Service(ComplaintRequest complaintRequest){
 
         ComplaintDetails complaintDetails=new ComplaintDetails();
 
@@ -35,6 +35,16 @@ public class ComplaintService {
         complaintDetails.setDescription(complaintRequest.getCompDesc());
         complaintDetails.setComplaintType(complaintRequest.getCompType());
         complaintDetails.setStatus("Pending");
+        complaintDetails.setTimeStamp(sdf.format(new Date(System.currentTimeMillis())));
+
+        System.out.println(sdf.format(new Date(System.currentTimeMillis())));
+        System.out.println(complaintDetails);
+        complaintRepo.save(complaintDetails);
+        return complaintDetails;
+    }
+
+    public ComplaintDetails AddComplaint_Service(ComplaintDetails complaintDetails){
+
         complaintDetails.setTimeStamp(sdf.format(new Date(System.currentTimeMillis())));
 
         System.out.println(sdf.format(new Date(System.currentTimeMillis())));
@@ -53,5 +63,9 @@ public class ComplaintService {
 
     public List<ComplaintDetails> StudentCompType_Service(Student_CompType student_compType){
         return complaintRepo.StudentCompType_Repo(student_compType);
+    }
+
+    public ComplaintDetails updateComp_Service(ComplaintDetails complaintDetails){
+        return complaintRepo.save(complaintDetails);
     }
 }

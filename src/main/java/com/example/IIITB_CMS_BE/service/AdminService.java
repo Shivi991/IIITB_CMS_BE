@@ -1,8 +1,10 @@
 package com.example.IIITB_CMS_BE.service;
 
 
+import com.example.IIITB_CMS_BE.beans.ComplaintDetails;
 import com.example.IIITB_CMS_BE.beans.EmpDetails;
 import com.example.IIITB_CMS_BE.beans.StudentDetails;
+import com.example.IIITB_CMS_BE.repository.ComplaintRepo;
 import com.example.IIITB_CMS_BE.repository.EmpRepo;
 import com.example.IIITB_CMS_BE.repository.StudentRepo;
 
@@ -22,6 +24,9 @@ public class AdminService {
 
     @Autowired
     private EmpRepo empRepo;
+
+    @Autowired
+    private ComplaintRepo complaintRepo;
     //adding
     public StudentDetails AddStudent_Service(StudentDetails studentDetails){
         System.out.println(studentDetails);
@@ -37,7 +42,9 @@ public class AdminService {
 //        return null;
     }
 
-
+    public StudentDetails GetStudent_Service(String RollNo){
+        return studentRepo.findByRollNo(RollNo);
+    }
 
     public List<StudentDetails> ViewStudent_Service(){
         return studentRepo.findStudents_Active();
@@ -72,6 +79,9 @@ public class AdminService {
         return empDetails;
     }
 
+    public EmpDetails GetEmployee_Service(String email){
+        return empRepo.findByEmail(email);
+    }
     public List<EmpDetails> ViewEmp_Service(){
         return empRepo.findEmp_Active();
     }
@@ -97,4 +107,15 @@ public class AdminService {
     }
 
 
+
+    public List<ComplaintDetails> ViewComplaints_Service() {
+        return complaintRepo.findAll();
+    }
+
+    public ComplaintDetails GetComplaint_Service(Integer compID){
+        return complaintRepo.getById(compID);
+    }
+    public ComplaintDetails UpdateComplaint_Service(ComplaintDetails complaintDetails) {
+        return complaintRepo.save(complaintDetails);
+    }
 }
