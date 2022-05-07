@@ -1,12 +1,8 @@
 ---
--
+- name: "Deploy a jar file"
   hosts: all
-  name: "Deploy a jar file"
-  remote_user: keerthi
   tasks:
-    -
+    - name: "Pull docker images"
       command: "docker-compose -f docker-compose.yml pull"
-      name: "Pull docker images"
-    -
+    - name: "Start docker compose"
       command: "docker-compose -f docker-compose.yml up -d"
-      name: "Start docker compose"
