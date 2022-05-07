@@ -16,25 +16,25 @@ services:
     networks:
       - cms_network
 
-  iiitb_cms_fe:
+  fe_container:
     image: keerthisree/cms_fe_img:latest
     container_name: fe_container
     build: /home/keerthi/Desktop/2ndSem/SPE/MajorProject/IIITB_CMS_FE/.
     ports:
       - "4300:80"
     links:
-      - app
+      - be_container
     networks:
       - cms_network
 
-  app:
+  be_container:
     image: keerthisree/cms_be_img:latest
     depends_on:
       - mysqldb
     container_name: be_container
     build: .
     expose:
-      - "8030"
+      - "8040"
     restart: on-failure
     env_file: .env
     ports:
