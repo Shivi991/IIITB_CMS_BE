@@ -1,0 +1,12 @@
+---
+-
+  hosts: "127.0.0.1"
+  name: "Deploy a jar file"
+  remote_user: keerthi
+  tasks:
+    -
+      command: "docker-compose -f docker-compose.yml pull"
+      name: "Pull docker images"
+    -
+      command: "docker-compose -f docker-compose.yml up -d"
+      name: "Start docker compose"
