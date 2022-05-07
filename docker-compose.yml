@@ -15,7 +15,7 @@ services:
       - db:/var/lib/mysql
 
   iiitb_cms_fe:
-    image: cms_fe_img
+    image: keerthisree/cms_fe_img:latest
     container_name: fe_container
     build: /home/keerthi/Desktop/2ndSem/SPE/MajorProject/IIITB_CMS_FE/.
     ports:
@@ -24,6 +24,7 @@ services:
       - app
 
   app:
+    image: keerthisree/cms_be_img:latest
     depends_on:
       - mysqldb
     container_name: be_container
