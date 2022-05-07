@@ -1,6 +1,6 @@
 ---
 - name: "Deploy a jar file"
-  hosts: all
+  hosts: "172.16.144.226"
   tasks:
     - name: "Pull docker images"
       command: "docker-compose -f docker-compose.yml pull"
