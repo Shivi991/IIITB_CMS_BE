@@ -34,17 +34,17 @@ services:
     container_name: be_container
     build: .
     expose:
-      - "8030"
+      - "8050"
     restart: on-failure
     env_file: .env
     ports:
-      - "8030:8030"
+      - "8050:8050"
     environment:
       SPRING_APPLICATION_JSON: '{
         "spring.datasource.url"  : "jdbc:mysql://mysqldb:$MYSQLDB_DOCKER_PORT/$MYSQLDB_DATABASE?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false",
         "spring.datasource.username" : "$MYSQLDB_USER",
         "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
-        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL8InnoDBDialect",
+        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
         "spring.jpa.hibernate.ddl-auto" : "update"
       }'
     volumes:
