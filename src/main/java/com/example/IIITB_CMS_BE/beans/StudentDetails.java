@@ -31,7 +31,7 @@ public class StudentDetails {
 
     private String HostelName;
 
-    private boolean Status=true;
+    private boolean Status=true ;
 
 
     @Override
