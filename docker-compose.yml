@@ -17,7 +17,7 @@ services:
       - cms_network
 
   fe_container:
-    image: keerthisree/cms_fe_img:latest
+    image: shivani/cms_fe_img:latest
     container_name: fe_container
     build: /home/keerthi/Desktop/2ndSem/SPE/MajorProject/IIITB_CMS_FE/.
     ports:
@@ -28,7 +28,7 @@ services:
       - cms_network
 
   be_container:
-    image: keerthisree/cms_be_img:latest
+    image: shivani/cms_be_img:latest
     depends_on:
       - mysqldb
     container_name: be_container
